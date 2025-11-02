@@ -31,7 +31,6 @@ desktop.ini
 
 # Hugging Face / Model Artifacts
 book_model/
-model/
 output/
 checkpoints/
 logs/
