@@ -8,7 +8,7 @@ The system is deployed through a **FastAPI backend** and a **React frontend** fo
 ---
 
 ### Project Images
-<p align="center"> <img src="assets/1.png" alt="OptiMind Chat UI 1" width="85%"/><br/> <b>Figure UI_1:</b> Initial interface of <i>OptiMind Chat</i> showing the home screen and input box.<br/><br/>
+<p> <img src="assets/1.png" alt="OptiMind Chat UI 1" width="85%"/><br/> <b>Figure UI_1:</b> Initial interface of <i>OptiMind Chat</i> showing the home screen and input box.<br/><br/>
 
 <img src="assets/2.png" alt="OptiMind Chat UI 2" width="85%"/><br/>
 <b>Figure UI_2:</b> Chat interface demonstrating message input (“What is LLM?”) and typing animation.<br/><br/>
