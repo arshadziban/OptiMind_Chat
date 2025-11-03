@@ -7,7 +7,7 @@ The system is deployed through a **FastAPI backend** and a **React frontend** fo
 
 ---
 
-### 📸 Project Images
+### Project Images
 
 <p align="center">
   <img src="assets/1.png" alt="OptiMind Chat UI 1" width="85%"/><br/>
