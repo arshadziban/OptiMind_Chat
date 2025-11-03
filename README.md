@@ -8,12 +8,17 @@ The system is deployed through a **FastAPI backend** and a **React frontend** fo
 ---
 
 ### Project Images
+<p align="center"> <img src="/mnt/data/1.png" alt="OptiMind Chat UI 1" width="85%"/><br/> <b>Figure UI_1:</b> Initial interface of <i>OptiMind Chat</i> showing the home screen and input box.<br/><br/>
 
-<p align="center">
-  <img src="assets/1.png" alt="OptiMind Chat UI 1" width="85%"/><br/>
-  <img src="assets/2.png" alt="OptiMind Chat UI 2" width="85%"/><br/>
-  <img src="assets/3.png" alt="OptiMind Chat UI 3" width="85%"/><br/>
-  <img src="assets/4.png" alt="OptiMind Chat UI 4" width="85%"/>
+<img src="/mnt/data/2.png" alt="OptiMind Chat UI 2" width="85%"/><br/>
+<b>Figure UI_2:</b> Chat interface demonstrating message input (“What is LLM?”) and typing animation.<br/><br/>
+
+<img src="/mnt/data/3.png" alt="OptiMind Chat UI 3" width="85%"/><br/>
+<b>Figure UI_3:</b> Model-generated response explaining the concept of LLM with contextual details.<br/><br/>
+
+<img src="/mnt/data/4.png" alt="OptiMind Chat UI 4" width="85%"/><br/>
+<b>Figure UI_4:</b> Interactive chat example showing a detailed explanation for “Chapter 4.”
+
 </p>
 
 
