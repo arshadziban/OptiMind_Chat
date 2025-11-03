@@ -31,24 +31,27 @@ app.add_middleware(
 )
 
 # -----------------------------------------------------------
-# Model Loading (Local Path)
+# Model Loading (GPU Only - CUDA)
 # -----------------------------------------------------------
-MODEL_PATH =  r"E:/Important/Skills/book_chat_bot/backend/model/book_model"
+MODEL_PATH = r"E:/Important/Skills/book_chat_bot/backend/model/book_model"
 
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(f"Model path not found: {MODEL_PATH}")
 
 print("Loading model from:", MODEL_PATH)
 
+# Force CUDA device
+device = torch.device("cuda:0")
+
+# Load tokenizer and model (GPU only)
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, local_files_only=True)
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_PATH,
     local_files_only=True,
-    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-    device_map="auto"
-)
+    torch_dtype=torch.float16,  # Force half precision for GPU
+).to(device)
 
-print("Model loaded successfully.")
+print("Model loaded successfully on GPU (CUDA only).")
 
 # -----------------------------------------------------------
 # Request Schema Definition
@@ -72,12 +75,13 @@ async def generate_text(data: Query):
 ### Response:
 """
 
-    inputs = tokenizer(full_prompt, return_tensors="pt").to(model.device)
+    # Move input to GPU
+    inputs = tokenizer(full_prompt, return_tensors="pt").to(device)
 
     with torch.inference_mode():
         output = model.generate(
             **inputs,
-            max_new_tokens=600,
+            max_new_tokens=300,
             temperature=0.7,
             top_p=0.9,
             do_sample=True,
@@ -93,6 +97,8 @@ async def generate_text(data: Query):
     print(response)
     print("--------------------------\n")
 
+    torch.cuda.empty_cache()
+
     return {"response": response}
 
 # -----------------------------------------------------------
@@ -100,7 +106,7 @@ async def generate_text(data: Query):
 # -----------------------------------------------------------
 @app.get("/")
 async def root():
-    return {"message": "Book Chatbot API is running successfully."}
+    return {"message": "Book Chatbot API is running successfully (GPU Mode)."}
 
 @app.get("/ping")
 async def ping():
