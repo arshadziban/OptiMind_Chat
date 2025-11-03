@@ -16,58 +16,53 @@ The system is deployed through a **FastAPI backend** and a **React frontend** fo
   <img src="assets/4.png" alt="OptiMind Chat UI 4" width="85%"/>
 </p>
 
----
 
 ### **Dataset Preparation**
 
-* Used *The LLM Engineers Handbook* as the main data source.
-* Extracted raw text from the PDF using `pdfplumber`.
-* Cleaned the text by removing extra whitespace, formatting symbols, and page numbers.
-* Tokenized the content and split it into manageable text chunks of approximately 1000 tokens each.
-* Organized the processed text into a training and validation dataset for supervised fine-tuning.
+The dataset was created from *The LLM Engineers Handbook*. Text was extracted using `pdfplumber`, cleaned to remove unnecessary formatting, and split into 1000-token segments. These were organized into training and validation sets to ensure balanced and efficient supervised fine-tuning.
 
----
+
 
 ### **Model Selection and Quantized Fine-Tuning (QLoRA)**
 
-* Selected **Meta-LLaMA-3.1-8B** as the base model.
-* Applied **Quantized Low-Rank Adaptation (QLoRA)** to fine-tune the model efficiently on limited GPU memory.
-* Enabled 4-bit quantization and trained only low-rank adapter parameters rather than full model weights.
-* Configured the LoRA setup with specific ranks, alpha, dropout, and target transformer layers.
-* Used the **Supervised Fine-Tuning (SFT)** procedure from the `trl` library to train on the handbook text for several epochs.
-* Monitored training progress with gradient accumulation and mixed-precision optimization for stability and performance.
+The base model **Meta-LLaMA-3.1-8B** was fine-tuned using **Quantized Low-Rank Adaptation (QLoRA)**.
+This method used 4-bit quantization and low-rank adapters, training only small parameter subsets while keeping the main weights frozen.
+The `trl` library’s Supervised Fine-Tuning (SFT) approach ensured efficient training with stable performance under limited GPU resources.
 
----
+
 
 ### **Merging the Trained Model**
 
-* After fine-tuning, merged the LoRA adapter weights into the base LLaMA model to produce a unified model checkpoint.
-* The merged model became a self-contained version suitable for inference without external adapters.
+After training, LoRA adapter weights were merged into the base model, producing a unified, self-contained checkpoint.
+This final version required no external adapters and was optimized for fast inference.
 
----
+
 
 ### **Model Inference and Testing**
 
-* Conducted inference tests to verify output quality.
-* Used book-related prompts such as summarization, explanation of key concepts, and moral lessons.
-* The model generated coherent, context-aware responses that accurately reflected the contents and principles discussed in the book.
+Inference testing used prompts related to book concepts, summaries, and moral insights.
+The chatbot produced coherent, context-aware responses aligned with the book’s content and style, confirming successful fine-tuning.
 
----
+
 
 ### **Backend Development (FastAPI)**
 
-* Built a **FastAPI** application to serve the fine-tuned model through a REST API.
-* Created an endpoint `/generate` that accepts a text prompt and returns the model’s generated response.
-* Implemented request-response handling, tokenization, and text generation within an inference context for efficiency.
-* Added CORS middleware to enable frontend access.
-* Verified the API using the automatically generated Swagger UI documentation.
+The **FastAPI** backend served as the model’s interface through a `/generate` endpoint that processed prompts and returned generated text.
+CORS middleware enabled frontend access, and Swagger UI documentation verified the API’s reliability and usability.
 
----
+
 
 ### **Frontend Development (React)**
 
-* Designed a **React** web interface for real-time interaction with the chatbot.
-* Developed a clean chat layout with user and assistant message bubbles.
-* Implemented typing animations to indicate the model’s response generation.
-* Added a custom title, favicon, and a bot avatar for branding consistency.
-* Connected the frontend to the backend API using Axios for HTTP requests.
+The **React** frontend provided a clean, chat-based interface with user and bot message bubbles.
+Typing animations, a favicon, and a bot avatar enhanced interaction and branding.
+Axios handled API communication, ensuring real-time responses from the model.
+
+---
+
+<br><br>
+
+<p align="center">
+  <span style="font-size:40px; font-weight:bold;">THANK YOU</span>
+</p>
+
