@@ -10,10 +10,10 @@ The system is deployed through a **FastAPI backend** and a **React frontend** fo
 ### 📸 Project Images
 
 <p align="center">
-  <img src="assets/1.PNG" alt="OptiMind Chat UI 1" width="85%"/><br/>
-  <img src="assets/2.PNG" alt="OptiMind Chat UI 2" width="85%"/><br/>
-  <img src="assets/3.PNG" alt="OptiMind Chat UI 3" width="85%"/><br/>
-  <img src="assets/4.PNG" alt="OptiMind Chat UI 4" width="85%"/>
+  <img src="assets/1.png" alt="OptiMind Chat UI 1" width="85%"/><br/>
+  <img src="assets/2.png" alt="OptiMind Chat UI 2" width="85%"/><br/>
+  <img src="assets/3.png" alt="OptiMind Chat UI 3" width="85%"/><br/>
+  <img src="assets/4.png" alt="OptiMind Chat UI 4" width="85%"/>
 </p>
 
 ---
