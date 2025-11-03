@@ -29,7 +29,7 @@ export default function App() {
     } catch {
       const errorMessage = {
         role: "assistant",
-        content: "⚠️ Unable to connect to the model. Please try again.",
+        content: "Unable to connect to the model. Please try again.",
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
